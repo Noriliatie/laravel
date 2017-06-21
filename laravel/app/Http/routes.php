@@ -11,6 +11,17 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function(){
     return view('welcome');
 });
+Route::get('/notes', 'NotesController@index');
+Route::get('/notes/show', 'NotesController@show');
+Route::get('/notes/create', 'NotesController@create');
+Route::post('/create', 'NotesController@store');
+Route::get('/notes/{note}', 'NotesController@show');
+Route::get('/notes/{note}/edit', 'NotesController@edit');
+Route::post('/notes/{note}/comments', 'CommentsController@store');
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
